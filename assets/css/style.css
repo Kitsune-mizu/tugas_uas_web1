@@ -603,153 +603,171 @@ body {
 
 .footer-links { display: flex; gap: 1rem; }
 
-/* --- RESPONSIVE DESIGN (MEDIA QUERIES) --- */
-@media (max-width: 1024px) {
-    .dashboard-content { grid-template-columns: 1fr; }
+/* =========================================================
+   MOBILE FIRST BASE (DEFAULT = HP)
+========================================================= */
+
+/* Layout */
+.main-content {
+    padding: 1rem;
 }
 
-@media (max-width: 768px) {
-    .main-content, .header-content, .page-header, .footer-content {
-        padding: 1rem;
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-    .form-grid, .action-grid { grid-template-columns: 1fr; }
-    .form-actions, .action-buttons { flex-direction: column; }
-    .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
-    .data-table { font-size: 0.75rem; }
-    .stat-card { padding: 1rem; }
-    .stat-icon { width: 50px; height: 50px; font-size: 1.25rem; }
+.content-wrapper {
+    max-width: 100%;
+    padding: 0;
 }
 
-@media (max-width: 480px) {
-    .dashboard-grid { grid-template-columns: 1fr; }
-    .recent-item { flex-direction: column; text-align: center; }
-    .item-stock { margin-left: 0; }
+/* Header */
+.header-content {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    text-align: center;
 }
 
+.main-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .5rem;
+}
 
-/* --- MOBILE & RESPONSIVE OPTIMIZATION --- */
+.nav-link {
+    padding: .5rem .75rem;
+    font-size: .75rem;
+}
 
-@media (max-width: 768px) {
-    /* Layout & Spacing */
-    .main-content {
-        padding: 1rem 0.5rem; /* Margin lebih tipis di mobile */
-    }
+/* Page Header */
+.page-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
 
-    /* Header & Navigation */
-    .header-content {
-        padding: 1rem;
-        flex-direction: column;
-        gap: 1rem;
-    }
+.header-title h2 {
+    font-size: 1.25rem;
+}
 
-    .main-nav {
-        width: 100%;
-        overflow-x: auto; /* Navigasi bisa digeser horizontal */
-        padding-bottom: 5px;
-        justify-content: flex-start;
-        gap: 0.5rem;
-        -webkit-overflow-scrolling: touch;
-    }
+/* Buttons */
+.btn {
+    width: 100%;
+    justify-content: center;
+}
 
-    .nav-link {
-        white-space: nowrap; /* Teks menu tidak turun ke bawah */
-        padding: 0.6rem 0.8rem;
-        font-size: 0.875rem;
-    }
+/* Forms */
+.form-grid {
+    grid-template-columns: 1fr;
+}
 
-    /* Page Header */
-    .page-header {
-        flex-direction: column;
-        text-align: center;
-        padding: 1.25rem 1rem;
-        border-radius: 12px;
-    }
+.form-actions {
+    flex-direction: column;
+}
 
-    .header-actions {
-        width: 100%;
-        justify-content: center;
-    }
+/* Tables → SCROLL */
+.table-responsive {
+    overflow-x: auto;
+}
 
-    /* Dashboard Stats */
-    .dashboard-grid {
-        grid-template-columns: 1fr; /* Satu kolom di mobile */
-        gap: 1rem;
-    }
+.data-table th,
+.data-table td {
+    font-size: .75rem;
+    padding: .5rem;
+}
 
-    .stat-card {
-        padding: 1.25rem;
-    }
+/* Dashboard */
+.dashboard-grid {
+    grid-template-columns: 1fr;
+}
 
-    /* Dashboard Content (Chart & Recent) */
-    .dashboard-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
+.stat-card {
+    padding: 1rem;
+}
 
-    /* Forms */
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
+.stat-info h3 {
+    font-size: 1.5rem;
+}
 
-    .form-actions {
-        flex-direction: column-reverse; /* Tombol batal di bawah tombol simpan */
-    }
+/* Dashboard Content */
+.dashboard-content {
+    grid-template-columns: 1fr;
+}
 
+/* Recent Items */
+.recent-item {
+    flex-direction: column;
+    text-align: center;
+}
+
+.item-stock {
+    margin-left: 0;
+}
+
+/* Quick Actions */
+.action-grid {
+    grid-template-columns: 1fr;
+}
+
+/* Footer */
+.footer-content {
+    flex-direction: column;
+    gap: .75rem;
+    text-align: center;
+}
+
+/* =========================================================
+   TABLET ≥ 640px
+========================================================= */
+@media (min-width: 640px) {
     .btn {
-        width: 100%; /* Tombol jadi full-width di mobile */
-        justify-content: center;
-        padding: 0.8rem;
+        width: auto;
     }
 
-    /* Data Table Mobile */
-    .table-responsive {
-        border-radius: 12px;
-        border: 1px solid #e2e8f0;
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .data-table th, .data-table td {
-        padding: 0.75rem;
-        font-size: 0.8rem;
-    }
-
-    /* Login Box Mobile */
-    .login-box {
-        width: 100%;
-        max-width: 320px;
-        padding: 25px 20px;
+    .action-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Penyesuaian untuk layar sangat kecil (Small Phones) */
-@media (max-width: 480px) {
-    .logo h1 {
-        font-size: 1.25rem;
-    }
-
-    .stat-info h3 {
-        font-size: 1.5rem;
-    }
-
-    .recent-item {
-        flex-direction: row; /* Tetap horizontal untuk item list */
-        align-items: center;
+/* =========================================================
+   TABLET / LAPTOP ≥ 768px
+========================================================= */
+@media (min-width: 768px) {
+    .header-content {
+        flex-direction: row;
         text-align: left;
     }
 
-    .item-info h4 {
-        font-size: 0.8rem;
+    .page-header {
+        flex-direction: row;
+        text-align: left;
     }
 
-    .item-stock {
-        display: none; /* Sembunyikan elemen kurang penting di layar sangat kecil */
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-content {
+        grid-template-columns: 2fr 1fr;
     }
 }
 
-/* Animasi Halus untuk Sentuhan */
-.nav-link:active, .btn:active, .action-card:active {
-    transform: scale(0.98);
-    transition: 0.1s;
+/* =========================================================
+   DESKTOP ≥ 1024px
+========================================================= */
+@media (min-width: 1024px) {
+    .content-wrapper {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

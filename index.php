@@ -3,7 +3,7 @@ session_start();
 
 define('BASE_PATH', dirname(__FILE__));
 
-define('BASE_URL', 'http://localhost/lab_UAS'); 
+define('BASE_URL', 'http://localhost/tugas_uas_web1'); 
 define('GAMBAR_PATH', BASE_PATH . '/assets/gambar');
 define('GAMBAR_URL', BASE_URL . '/assets/gambar');
 
