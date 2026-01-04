@@ -1,0 +1,183 @@
+/* =====================================================
+   GLOBAL AUTH WRAPPER
+===================================================== */
+
+.auth-body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    padding: 1rem;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 1.8rem;
+}
+
+.auth-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-bottom: 0.6rem;
+}
+
+.auth-logo i {
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.auth-logo h2 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+.auth-header p {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.auth-form {
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.3rem;
+}
+
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4a5568;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.form-label i {
+    color: #667eea;
+}
+
+.form-control {
+    width: auto;
+    padding: 0.75rem 1rem;
+    background: #f7fafc;
+    border-radius: 10px;
+    border: 1px solid #cbd5e0;
+    font-size: 0.95rem;
+    transition: 0.25s ease-in-out;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn-primary {
+    width: 100%;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    transition: 0.25s ease-in-out;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(102, 126, 234, 0.35);
+}
+
+/* =====================================================
+   ALERT
+===================================================== */
+
+.alert {
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.alert-error {
+    background: #fed7d7;
+    border: 1px solid #feb2b2;
+    color: #742a2a;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.auth-footer {
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    text-align: center;
+    border-top: 1px solid #e2e8f0;
+}
+
+.auth-footer p {
+    font-size: 0.8rem;
+    color: #718096;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 2rem 1.5rem;
+    }
+}
