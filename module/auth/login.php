@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
 
             <div class="auth-footer">
-                <p>Default login: <strong>admin</strong> / <strong>admin123</strong></p>
+                <p>Default login: <strong>admin</strong> / <strong>admin123</strong> or <strong>user</strong> / <strong>user123</strong></p>
             </div>
         </div>
     </div>

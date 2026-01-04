@@ -173,7 +173,7 @@
 }
 
 /* =====================================================
-   AUTH – MOBILE FIRST BASE (DEFAULT = HP)
+   GLOBAL AUTH WRAPPER (MOBILE FIRST)
 ===================================================== */
 
 .auth-body {
@@ -186,6 +186,10 @@
     padding: 1rem;
 }
 
+/* =====================================================
+   CONTAINER
+===================================================== */
+
 .auth-container {
     width: 100%;
     max-width: 100%;
@@ -193,17 +197,26 @@
     justify-content: center;
 }
 
+/* =====================================================
+   CARD
+===================================================== */
+
 .auth-card {
     width: 100%;
-    background: rgba(255, 255, 255, 0.96);
+    max-width: 100%;
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 16px;
-    padding: 2rem 1.5rem;
-    backdrop-filter: blur(10px);
+    padding: 1.75rem 1.25rem;
+    box-sizing: border-box;
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.35);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
 }
 
-/* Header */
+/* =====================================================
+   HEADER
+===================================================== */
+
 .auth-header {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -218,7 +231,7 @@
 }
 
 .auth-logo i {
-    font-size: 2.4rem;
+    font-size: 2.3rem;
     background: linear-gradient(135deg, #667eea, #764ba2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -236,12 +249,20 @@
     color: #718096;
 }
 
-/* Form */
+/* =====================================================
+   FORM
+===================================================== */
+
+.auth-form {
+    width: 100%;
+}
+
 .form-group {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.25rem;
 }
 
 .form-label {
@@ -253,48 +274,102 @@
     gap: 0.4rem;
 }
 
-.form-control {
-    width: 100%;
-    padding: 0.75rem 0.9rem;
-    font-size: 0.9rem;
-    border-radius: 10px;
+.form-label i {
+    color: #667eea;
 }
 
-/* Button */
+/* INPUT FIX SIMETRIS */
+.form-control {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    background: #f7fafc;
+    border-radius: 10px;
+    border: 1px solid #cbd5e0;
+    font-size: 0.95rem;
+    transition: 0.25s ease-in-out;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
 .btn-primary {
     width: 100%;
     padding: 0.85rem;
-    font-size: 0.95rem;
+    border: none;
     border-radius: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    transition: 0.25s ease-in-out;
 }
 
-/* Alert */
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* =====================================================
+   ALERT
+===================================================== */
+
 .alert {
-    font-size: 0.85rem;
     padding: 0.85rem 1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    font-weight: 500;
 }
 
-/* Footer */
+.alert-error {
+    background: #fed7d7;
+    border: 1px solid #feb2b2;
+    color: #742a2a;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
 .auth-footer {
-    margin-top: 1rem;
-    padding-top: 1rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    text-align: center;
+    border-top: 1px solid #e2e8f0;
 }
 
 .auth-footer p {
     font-size: 0.75rem;
+    color: #718096;
 }
 
 /* =====================================================
-   TABLET ≥ 640px
+   TABLET (>= 640px)
 ===================================================== */
+
 @media (min-width: 640px) {
     .auth-container {
         max-width: 420px;
     }
 
     .auth-card {
-        padding: 2.3rem 2rem;
-        border-radius: 18px;
+        padding: 2.2rem 2rem;
+        border-radius: 20px;
     }
 
     .auth-logo h2 {
@@ -303,20 +378,15 @@
 }
 
 /* =====================================================
-   LAPTOP / DESKTOP ≥ 768px
+   DESKTOP (>= 1024px)
 ===================================================== */
-@media (min-width: 768px) {
+
+@media (min-width: 1024px) {
+    .auth-body {
+        padding: 2rem;
+    }
+
     .auth-card {
-        padding: 2.5rem 2.2rem;
-        border-radius: 20px;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-    }
-
-    .auth-logo i {
-        font-size: 2.8rem;
-    }
-
-    .auth-logo h2 {
-        font-size: 1.7rem;
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
     }
 }
