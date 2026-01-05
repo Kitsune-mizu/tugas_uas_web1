@@ -22,7 +22,7 @@ if ($isAdmin) {
     $categories_result = $db->query("SELECT kategori, COUNT(*) as count FROM data_barang GROUP BY kategori");
     $categories = $categories_result ? $categories_result->fetch_all(MYSQLI_ASSOC) : [];
 
-    $recent_result = $db->query("SELECT * FROM data_barang ORDER BY id_barang DESC LIMIT 2");
+    $recent_result = $db->query("SELECT * FROM data_barang ORDER BY id_barang DESC LIMIT 5");
     $recent_items = $recent_result ? $recent_result->fetch_all(MYSQLI_ASSOC) : [];
 
     $total_categories = count($categories);
