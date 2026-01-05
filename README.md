@@ -5,7 +5,7 @@ NIM  : 312410216
 Kelas: TI.24.A2
 ```
 
-## Struktur Program
+# Struktur Program
 ```
 TUGAS_UAS_WEB1/
 ├── .htaccess            (Konfigurasi Rewrite URL)
@@ -39,3 +39,11 @@ TUGAS_UAS_WEB1/
         ├── login.php
         └── logout.php
 ```
+# Pejelasan dan Screenshot
+## Tampilan dekstop
+
+![alt text](image.png)
+
+* Tampilan form login untuk (admin) (http://localhost/tugas_uas_web1/auth/login)
+* Berisi tampilan input username dan password yang sudah di tentukan.
+

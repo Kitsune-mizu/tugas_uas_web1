@@ -4,7 +4,6 @@ $isAdmin = isAdmin();
 
 $db = $GLOBALS['db'];
 
-// ===== DEFAULT (AGAR USER TIDAK ERROR) =====
 $total_barang = 0;
 $total_stok = 0;
 $categories = [];
@@ -23,7 +22,7 @@ if ($isAdmin) {
     $categories_result = $db->query("SELECT kategori, COUNT(*) as count FROM data_barang GROUP BY kategori");
     $categories = $categories_result ? $categories_result->fetch_all(MYSQLI_ASSOC) : [];
 
-    $recent_result = $db->query("SELECT * FROM data_barang ORDER BY id_barang DESC LIMIT 5");
+    $recent_result = $db->query("SELECT * FROM data_barang ORDER BY id_barang DESC LIMIT 2");
     $recent_items = $recent_result ? $recent_result->fetch_all(MYSQLI_ASSOC) : [];
 
     $total_categories = count($categories);
@@ -102,94 +101,94 @@ if ($isAdmin) {
 
     <div class="dashboard-content">
         <!-- Chart Section -->
-        <div class="chart-section">
-            <div class="card">
-                <div class="card-header">
-                    <h3><i class="fas fa-chart-bar"></i> Distribusi Kategori</h3>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <?php if (!empty($categories) && $total_barang > 0): ?>
-                            <div class="category-chart">
-                                <?php foreach ($categories as $category): ?>
-                                    <div class="chart-item">
-                                        <div class="chart-label">
-                                            <span class="category-name"><?php echo htmlspecialchars($category['kategori']); ?></span>
-                                            <span class="category-count"><?php echo $category['count']; ?> items</span>
+        <div class="dashboard-content">
+            <!-- BARANG TERBARU → jadi kiri / utama -->
+            <div class="recent-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Barang Terbaru</h3>
+                        <a href="<?php echo BASE_URL; ?>/barang/index" class="btn btn-sm btn-primary">
+                            Lihat Semua
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <?php if (!empty($recent_items)): ?>
+                            <div class="recent-list recent-scroll">
+                                <?php foreach ($recent_items as $item): ?>
+                                    <div class="recent-item">
+                                        <div class="item-image">
+                                            <?php 
+                                            $imagePath = GAMBAR_PATH . '/' . $item['gambar'];
+                                            $imageUrl = $item['gambar'] ? GAMBAR_URL . '/' . $item['gambar'] : '';
+                                            if (!empty($item['gambar']) && file_exists($imagePath)): 
+                                            ?>
+                                                <img src="<?php echo $imageUrl; ?>" 
+                                                    alt="<?php echo htmlspecialchars($item['nama']); ?>"
+                                                    style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
+                                            <?php else: ?>
+                                                <div class="no-image-small">
+                                                    <i class="fas fa-image"></i>
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
-                                        <div class="chart-bar">
-                                            <div class="chart-fill" 
-                                                style="width: <?php echo ($category['count'] / $total_barang) * 100; ?>%">
-                                            </div>
+                                        <div class="item-info">
+                                            <h4><?php echo htmlspecialchars($item['nama']); ?></h4>
+                                            <p class="item-category"><?php echo htmlspecialchars($item['kategori']); ?></p>
+                                            <p class="item-price">Rp <?php echo number_format($item['harga_jual'], 0, ',', '.'); ?></p>
+                                        </div>
+                                        <div class="item-stock">
+                                            <span class="stock-badge <?php echo $item['stok'] > 0 ? 'in-stock' : 'out-of-stock'; ?>">
+                                                <?php echo $item['stok']; ?> stok
+                                            </span>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
                         <?php else: ?>
-                            <div class="empty-chart">
-                                <i class="fas fa-chart-pie"></i>
-                                <p>Belum ada data kategori</p>
+                            <div class="empty-state">
+                                <i class="fas fa-box-open"></i>
+                                <p>Belum ada data barang</p>
+                                <a href="<?php echo BASE_URL; ?>/barang/tambah" class="btn btn-primary">
+                                    Tambah Barang Pertama
+                                </a>
                             </div>
                         <?php endif; ?>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Recent Items -->
-        <div class="recent-section">
-            <div class="card">
-                <div class="card-header">
-                    <h3><i class="fas fa-clock"></i> Barang Terbaru</h3>
-                    <a href="<?php echo BASE_URL; ?>/barang/index" class="btn btn-sm btn-primary">
-                        Lihat Semua
-                    </a>
-                </div>
-                <div class="card-body">
-                    <?php if (!empty($recent_items)): ?>
-                        <div class="recent-list">
-                            <?php foreach ($recent_items as $item): ?>
-
-                                <div class="recent-item">
-                                    <div class="item-image">
-                                        <?php 
-                                        $imagePath = GAMBAR_PATH . '/' . $item['gambar'];
-                                        $imageUrl = $item['gambar'] ? GAMBAR_URL . '/' . $item['gambar'] : '';
-                                        
-                                        if (!empty($item['gambar']) && file_exists($imagePath)): 
-                                        ?>
-                                            <img src="<?php echo $imageUrl; ?>" 
-                                                alt="<?php echo htmlspecialchars($item['nama']); ?>"
-                                                style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
-                                        <?php else: ?>
-                                            <div class="no-image-small" style="width: 50px; height: 50px; background: #f7fafc; border: 2px dashed #cbd5e0; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #a0aec0;">
-                                                <i class="fas fa-image"></i>
+            <!-- DISTRIBUSI KATEGORI → jadi kanan / sidebar -->
+            <div class="chart-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-bar"></i> Distribusi Kategori</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <?php if (!empty($categories) && $total_barang > 0): ?>
+                                <div class="category-chart">
+                                    <?php foreach ($categories as $category): ?>
+                                        <div class="chart-item">
+                                            <div class="chart-label">
+                                                <span class="category-name"><?php echo htmlspecialchars($category['kategori']); ?></span>
+                                                <span class="category-count"><?php echo $category['count']; ?> items</span>
                                             </div>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="item-info">
-                                        <h4><?php echo htmlspecialchars($item['nama']); ?></h4>
-                                        <p class="item-category"><?php echo htmlspecialchars($item['kategori']); ?></p>
-                                        <p class="item-price">Rp <?php echo number_format($item['harga_jual'], 0, ',', '.'); ?></p>
-                                    </div>
-                                    <div class="item-stock">
-                                        <span class="stock-badge <?php echo $item['stok'] > 0 ? 'in-stock' : 'out-of-stock'; ?>">
-                                            <?php echo $item['stok']; ?> stok
-                                        </span>
-                                    </div>
+                                            <div class="chart-bar">
+                                                <div class="chart-fill" 
+                                                    style="width: <?php echo ($category['count'] / $total_barang) * 100; ?>%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
                                 </div>
-
-                            <?php endforeach; ?>
+                            <?php else: ?>
+                                <div class="empty-chart">
+                                    <i class="fas fa-chart-pie"></i>
+                                    <p>Belum ada data kategori</p>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                    <?php else: ?>
-                        <div class="empty-state">
-                            <i class="fas fa-box-open"></i>
-                            <p>Belum ada data barang</p>
-                            <a href="<?php echo BASE_URL; ?>/barang/tambah" class="btn btn-primary">
-                                Tambah Barang Pertama
-                            </a>
-                        </div>
-                    <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>

@@ -112,7 +112,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     background: rgba(255, 255, 255, 0.9);
     padding: 1.5rem 2rem;
     border-radius: 16px;
@@ -142,7 +142,7 @@ body {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     overflow: hidden;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .card-header {
@@ -355,9 +355,9 @@ body {
 /* --- DASHBOARD ELEMENTS --- */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: 1rem; 
 }
 
 .stat-card {
@@ -406,9 +406,7 @@ body {
 
 .dashboard-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    grid-template-columns: 2fr 2fr; 
 }
 
 /* --- CHARTS & RECENT ITEMS --- */
@@ -421,11 +419,10 @@ body {
 .chart-bar { width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
 .chart-fill { height: 100%; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 4px; transition: width 0.5s ease; }
 
-.recent-list { display: flex; flex-direction: column; gap: 1rem; }
+.recent-list { display: flex; flex-direction: row; gap: 1rem; overflow-x: auto; }
 .recent-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
     padding: 1rem;
     border-radius: 8px;
     border: 1px solid #e2e8f0;
@@ -461,8 +458,8 @@ body {
 .item-stock { margin-left: auto; }
 
 /* --- QUICK ACTIONS --- */
-.quick-actions { margin-bottom: 2rem; }
-.action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.quick-actions { margin-bottom: 1rem; }
+.action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 .action-card {
     display: flex;
     align-items: center;
@@ -810,4 +807,9 @@ body {
     .form-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .dashboard-content {
+        grid-template-columns: 1fr; /* full-width di tablet & mobile */
+    }
 }
+
