@@ -1,3 +1,5 @@
+<?php $isAdmin = function_exists('isAdmin') ? isAdmin() : false; ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -14,10 +16,12 @@
         <div class="header-content">
             <div class="logo">
                 <i class="fas fa-boxes"></i>
-                <h1>Inventory System</h1>
+                <?php if ($isAdmin): ?>
+                    <h1>Inventory System</h1>
+                <?php else: ?>
+                    <h1>Catalog System</h1>
+                <?php endif; ?>
             </div>
-
-            <?php $isAdmin = isAdmin(); ?>
 
             <nav class="main-nav">
                 <!-- Dashboard -->
