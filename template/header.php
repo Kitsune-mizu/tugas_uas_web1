@@ -15,6 +15,10 @@
     <header class="app-header">
         <div class="header-content">
             <div class="logo">
+                <button class="menu-toggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
                 <i class="fas fa-boxes"></i>
                 <?php if ($isAdmin): ?>
                     <h1>Inventory System</h1>
@@ -61,3 +65,14 @@
 
     <main class="main-content">
         <div class="content-wrapper">
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.main-nav');
+
+    toggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+});
+</script>
