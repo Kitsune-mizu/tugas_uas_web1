@@ -630,7 +630,52 @@ body {
     .dashboard-content { grid-template-columns: 2fr 1fr; }
     .card-header h3 { font-size: 1rem; }
     .card-header .btn { font-size: .75rem; padding: .4rem .75rem; }
+    
 }
+
+/* --- HEADER TITLE + ICON CENTER MOBILE FIX --- */
+@media (max-width: 767px) {
+    .page-header {
+        flex-direction: column;
+        align-items: center;  /* center seluruh header-content vertikal/horizontal */
+        text-align: center;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .header-title {
+        display: flex;
+        flex-direction: column;   /* icon di atas teks */
+        align-items: center;      /* center horizontal */
+        justify-content: center;  /* center vertical */
+        gap: 0.25rem;
+        width: 100%;
+    }
+
+    .header-title h2 {
+        display: flex;
+        align-items: center;     /* icon vertikal center */
+        justify-content: center; /* center icon + teks */
+        gap: 0.5rem;
+        font-size: 1.25rem;
+        margin: 0;
+    }
+
+    .header-title p {
+        margin: 0;
+        font-size: 0.875rem;
+        color: #718096;
+        text-align: center;
+    }
+
+    .header-actions {
+        margin-top: 0.5rem;
+        width: 100%;
+        display: flex;
+        justify-content: center; /* center waktu */
+    }
+}
+
 
 /* --- DESKTOP ≥ 1024px --- */
 @media (min-width: 1024px) {
@@ -638,4 +683,100 @@ body {
     .dashboard-grid { grid-template-columns: repeat(4, 1fr); }
     .form-grid { grid-template-columns: repeat(3, 1fr); }
     .dashboard-content { grid-template-columns: 1fr; }
+}
+
+/* --- DASAR DASHBOARD CONTENT --- */
+.dashboard-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Semua card di dashboard-content stretch tinggi */
+.dashboard-content .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Recent List → horizontal scroll tetap ada di mobile */
+.recent-list {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+}
+
+/* Recent item → stretch tinggi agar sama */
+.recent-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 0;
+    min-width: 200px;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+/* Category chart → stretch item agar rata dengan recent dan quick actions */
+.category-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.chart-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 0; /* agar tinggi sama */
+    margin-bottom: 3rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #f7fafc;
+}
+
+/* Quick actions → grid tetap auto-fit untuk responsif */
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.action-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* isi terbagi rata */
+    align-items: flex-start;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: #f7fafc;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.action-card:hover {
+    background: white;
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 767px) {
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+    .recent-item {
+        min-width: 100%;
+    }
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
 }
