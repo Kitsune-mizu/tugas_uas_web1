@@ -1,4 +1,4 @@
-# Penjelasan Program web untuk Tugas UAS
+# Penjelasan Program web atau Aplikasi sederhana (Mobile First) untuk Tugas UAS
 ```
 PRIYA FAWAZ ZAIDAN KHOIR (TI.24.A2)
 NIM 			: 312410216
