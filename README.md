@@ -10,6 +10,7 @@ Dosen Pengampu 	: Agung Nugroho, S.Kom., M.Kom.
 
 [![Tonton Video](https://img.youtube.com/vi/l4vPtvKf5o8/hqdefault.jpg)](https://youtu.be/l4vPtvKf5o8)
 ## - Link Youtube (https://youtu.be/l4vPtvKf5o8)
+## - PDF [Pemrograman Web 1- UAS.pdf](https://github.com/user-attachments/files/24445431/Pemrograman.Web.1-.UAS.pdf)
 # Struktur Program
 ```
 TUGAS_UAS_WEB1/
